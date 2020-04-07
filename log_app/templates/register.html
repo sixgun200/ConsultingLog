@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- <link rel="stylesheet" script="text/css" href="style.css"> -->
+</head>
+<body>
+    <div class="container">
+        <!-- <h1 id="regtitle">Login</h1> -->
+        <div class="registration">
+            <h3>Register</h3>
+                {% if messages %}
+                <ul id="regmessages">
+                    {% for message in messages %}
+                    {% if "register" in message.tags %}
+                    <!-- <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li> -->
+                    <li>{{ message }}</li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            <form class="regform" action="/c_log/registeruser" method="POST">
+                {% csrf_token %}
+                <p>User Name<input class="textbox" type="text" name="username"  pattern=".{3,}"></p>
+                <p>First Name<input class="textbox" type="text" name="fname" pattern=".{2,}"></p>
+                <p>Last Name<input class="textbox" type="text" name="lname" pattern=".{2,}"></p>
+                <p>Email<input class="textbox" type="email" name="email"></p>
+                <p>Password<input class="textbox" type="password" name="password" pattern=".{4,}" title="Password should be at least 4 characters."></p>
+                <p>Confirm PW<input class="textbox" type="password" name="confirmpw" pattern=".{4,}" title="Password should be at least 4 characters."></p>
+                <button>Register</button>
+            </form>
+            <a href="/c_log/login">Login</a>
+        </div>
+    </div>
+</body>
+</html>

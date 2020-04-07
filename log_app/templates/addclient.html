@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New Client</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/addclientstyle.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h5 id="newclienttitle">Account: {{ user.username }}</h5>
+        <h4>Create a new Client</h4>
+        <div class="addclient">
+                {% if messages %}
+                <ul id="messages">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            <form class="newclientform" action="/client/create" method="POST">
+                {% csrf_token %}
+                <p>Company Name <input class="textbox" type="text" name="company"></p>
+                <p>Contact First Name <input class="textbox" type="text" name="fname"></p>
+                <p>Contact Last Name <input class="textbox" type="text" name="lname"></p>
+                <p>Phone <input class="textbox" type="phone" name="phone"></p>
+                <p>e-mail <input class="textbox" type="email" name="email"></p>
+                <p>Address <input class="textbox" type="text" name="address"></p>
+                <p>Bill Rate <input class="textbox" type="number" min="0.00" max="1000.00" step="1.00" name="rate"></p>
+                <p>Notes <input class="textbox" type="text" name="notes"></p>
+                <button id="cancelbutton" formaction="/c_log/main">Cancel</button> <button id="submitbutton">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

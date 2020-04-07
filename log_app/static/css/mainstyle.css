@@ -1,0 +1,56 @@
+*{
+    /* outline: 1px dotted red; */
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* main.html */
+.jobsheader{
+    margin: 20px;
+}
+#greeting{
+    font-size: large;
+    font-weight: bold;
+}
+#logoutlink{
+    margin: 0 100px 0 20px;
+}
+#tabletitle{
+    padding: 0px 0px 7px 10px;
+    font-weight: normal;
+}
+.jobscontainer{
+    margin: 0px 0px 20px 10px;
+    width: 612px;
+}
+td, th {
+    text-align: left;
+    padding: 4px 4px;
+    /* border-right: solid black; */
+    font-weight: normal;
+    font-size: small;
+}
+table{
+    border: 1px solid black;
+    /* border-bottom: solid black;
+    border-left: solid black; */
+    border-spacing: 0px;
+    font-weight: normal;
+    width: 450px;
+}
+.jobstable tr:nth-child(even) {
+    table-layout: inherit;
+    background-color: darkgrey;
+    width: 100%;
+}
+th{
+    background-color: grey;
+}
+button{
+    margin: 10px 25px 10px 10px;
+    width: 80px;
+    height: 25px;
+    border: 2px solid black;
+    box-shadow: 3px 3px black;
+}

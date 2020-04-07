@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jobs Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/mainstyle.css' %}">
+</head>
+<body>
+  <div class="jobsheader">
+      <button><a href="/c_log/start">Start</a></button><span>00:00</span>
+      <button><a href="/c_log/stop">Stop</a></button>
+      <form action="/c_log/job/new" method="POST">
+        {% csrf_token %}
+        <a id="logoutlink" href="logout">Logout</a><button>New job!</button>
+      </form>
+  </div>
+  <div class="jobscontainer">
+      <h4 id="tabletitle">{{ user.fname }}'s jobs:</h4>
+      <table class="jobstable">
+          <tr>
+              <th>Date</th>
+              <th>Job</th>
+              <th>Time</th>
+          </tr>
+          {% for job in allJobs %}
+          <tr>
+              <td width=20%><a href="job/{{ job.id }}">{{ job.date }}</a></td>
+              <td width=60%><a href="jobs/{{ job.id }}">{{ job.name }}</a></td>
+              <td width=20%><a href="jobs/remove/{{ job.id }}">Remove</a></td>
+          </tr>
+          {% endfor %}
+      </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New Job</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/newjobstyle.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="newjobtitle">{{ user.fname }}</h1>
+        <div class="addjob">
+                {% if messages %}
+                <ul id="messages">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            <form class="newjobform" action="/job/create" method="POST">
+                {% csrf_token %}
+                <p>Client
+                    <select name="client">
+                        <option class="options"></option>
+                        {% for c in clients %}
+                        <option>{{ c.company }}</option>
+                        {% endfor %}
+                    </select>
+                    <a href="/c_log/client/new"> + </a>
+                    </p>
+                <p>Job Name <input class="textbox" type="text" name="name"></p>
+                <p>Date <input class="textbox" type="date" name="date"></p>
+                <p>Start Time <input class="textbox" type="time" name="start"></p>
+                <p>Stop Time <input class="textbox" type="time" name="stop"></p>
+                <p>Duration <input class="textbox" type="time" name="duration"></p>
+                <button id="cancelbutton" formaction="/c_log/main">Cancel</button> <button id="submitbutton">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
